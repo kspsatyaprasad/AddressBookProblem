@@ -5,7 +5,10 @@ import java.util.Scanner; // Import the Scanner class to read text files
 public class ReadFile {
   public static void main(String[] args) {
     try {
-	  File myObj = new File("C:\\Users\\user\\Desktop\\AddressBook\\NewFile.txt");
+	  Scanner scanner = new Scanner(System.in);
+	  System.out.print("Enter file name: ");
+	  String fileName = scanner.next();
+	  File myObj = new File("C:\\Users\\user\\Desktop\\AddressBook\\"+fileName);
       Scanner myReader = new Scanner(myObj);
       while (myReader.hasNextLine()) {
         String data = myReader.nextLine();
