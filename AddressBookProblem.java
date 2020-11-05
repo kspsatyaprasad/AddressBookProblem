@@ -328,7 +328,7 @@ class Options
 				} 
 				catch(IOException e)
 				{
-							    System.out.println("COULD NOT EDIT FILE");
+				System.out.println("COULD NOT EDIT FILE");
 							
 				}
 		 }
