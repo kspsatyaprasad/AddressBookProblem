@@ -1,13 +1,16 @@
 import java.io.File;
 import java.io.IOException;
-public class Testing 
+import java.util.Scanner;
+public class CreateFile 
 {
 
 	public static void main(String[] args) 
 	{
 		try 
-		{
-			File myObj = new File("C:\\Users\\user\\Desktop\\AddressBook\\NewFile.txt");
+		{   Scanner scanner = new Scanner(System.in);
+		    System.out.print("Enter file name: ");
+     		String fileName = scanner.next();
+    		File myObj = new File("C:\\Users\\user\\Desktop\\AddressBook\\"+fileName);
 			if (myObj.createNewFile())
 			{
 				System.out.println("File created: "+ myObj.getName());
