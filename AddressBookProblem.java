@@ -1,23 +1,34 @@
-import java.io.File;  // Import the File class
-import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.util.Scanner; // Import the Scanner class to read text files
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+public class WriteFile {
 
-public class ReadFile {
-  public static void main(String[] args) {
-    try {
-	  Scanner scanner = new Scanner(System.in);
-	  System.out.print("Enter file name: ");
-	  String fileName = scanner.next();
-	  File myObj = new File("C:\\Users\\user\\Desktop\\AddressBook\\"+fileName);
-      Scanner myReader = new Scanner(myObj);
-      while (myReader.hasNextLine()) {
-        String data = myReader.nextLine();
-        System.out.println(data);
-      }
-      myReader.close();
-    } catch (FileNotFoundException e) {
-      System.out.println("An error occurred.");
-      e.printStackTrace();
-    }
-  }
-}
+	public static void main(String[] args) {
+		File log = new File("C:\\Users\\user\\Desktop\\AddressBook\\NEWFILE.txt");
+
+				try{
+				    if(!log.exists()){
+				        System.out.println("We had to make a new file.");
+				        log.createNewFile();
+				    }
+
+				    FileWriter fileWriter = new FileWriter(log, true);
+
+				    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+				    
+					Object timeStamp ="satya";
+					bufferedWriter.write("******* " + timeStamp.toString() +"******* " + "\n");
+				    bufferedWriter.close();
+
+				    System.out.println("Done");
+				} catch(IOException e) {
+				    System.out.println("COULD NOT WRITE!!");
+				}
+		
+
+		}
+		
+		
+
+	}
