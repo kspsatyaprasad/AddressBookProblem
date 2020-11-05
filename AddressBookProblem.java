@@ -13,7 +13,8 @@ public class WriteFile
 	    String fileName = scanner.next();
 		File log = new File("C:\\Users\\user\\Desktop\\AddressBook\\"+fileName);
 
-				try{
+				try
+				{
 				    if(!log.exists())
 				    {
 				        System.out.println("We had to make a new file.");
@@ -23,19 +24,18 @@ public class WriteFile
 				    FileWriter fileWriter = new FileWriter(log, true);
 
 				    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-				    
-					Object timeStamp ="newtext";
-					bufferedWriter.write("******* " + timeStamp.toString() +"******* " + "\n");
+					System.out.print("Enter Text to write: ");
+					String text = scanner.next();
+					//Object timeStamp ="newtext";
+					bufferedWriter.write("******* " + text.toString() +"******* " + "\n");
 				    bufferedWriter.close();
-
 				    System.out.println("Done");
-				} catch(IOException e) {
+				} 
+				catch(IOException e) 
+				{
 				    System.out.println("COULD NOT WRITE!!");
 				}
 		
-
 		}
-		
-		
 
 	}
