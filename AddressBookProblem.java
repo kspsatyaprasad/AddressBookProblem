@@ -36,7 +36,8 @@ class Options
 		System.out.println("3. To Read into a File");
 		System.out.println("4. To Rename a File");
 		System.out.println("5. To Edit a File");
-		System.out.println("6. To Quit");
+		System.out.println("6. To Delete");
+		System.out.println("7. To Quit");
 
 		int choice = scanner.nextInt();
 		switch(choice) 
@@ -68,6 +69,12 @@ class Options
 		case 5:
 			System.out.print("You Choose to edit a file \n");
 			edit();
+			System.out.println("\n");
+			askUser();
+			break;
+		case 6:
+			System.out.print("You Choose to delete a file \n");
+			deleteFile();
 			System.out.println("\n");
 			askUser();
 			break;
@@ -328,9 +335,25 @@ class Options
 				} 
 				catch(IOException e)
 				{
-				System.out.println("COULD NOT EDIT FILE");
+							    System.out.println("COULD NOT EDIT FILE");
 							
 				}
+		 }
+		 void deleteFile() 
+		 {     
+			   Scanner scanner = new Scanner(System.in);
+			   System.out.print("Enter file name to delete: ");
+			   String fileName = scanner.next();
+			   File file = new File("C:\\Users\\user\\Desktop\\AddressBook\\"+fileName); 
+		        if(file.delete()) 
+		        { 
+		            System.out.println("File deleted successfully"); 
+		        } 
+		        else
+		        { 
+		            System.out.println("Failed to delete the file"); 
+		        }
+			   
 		 }
 }
 
