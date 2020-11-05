@@ -1,13 +1,10 @@
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.BufferedWriter;
 import java.util.*;  
-// SAVE AS FILES
+//PROVIDES SAVE AS OPTION
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.charset.StandardCharsets;
@@ -15,20 +12,23 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class AddressBook {
+public class AddressBook 
+{
 
 	
 	Scanner scanner = new Scanner(System.in);
 
-	public static void main(String[] args) {
-		AddressBook addressBook = new AddressBook();
-		Methods methods = new Methods();
+	public static void main(String[] args) 
+	{
+		Options methods = new Options();
 		methods.askUser();
 	}
 }
-class Methods {
-	/** Menu **/
-	void askUser() {
+class Options 
+{
+	/** MENU TO BE PROVIDED TO USER **/
+	void askUser() 
+	{
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Select an action..");
 		System.out.println("1. To Create a File");
@@ -39,7 +39,8 @@ class Methods {
 		System.out.println("6. To Quit");
 
 		int choice = scanner.nextInt();
-		switch(choice) {
+		switch(choice) 
+		{
 		case 1:
 			System.out.print("You Choose to create a file \n");
 			CreateFile();
@@ -76,19 +77,24 @@ class Methods {
 		}
 	}
 	
-	void CreateFile() {
+	void CreateFile() 
+	{
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Enter file name: ");
 		String fileName = scanner.next();
-		try {
+		try 
+		{
 			File myObj = new File("C:\\Users\\user\\Desktop\\AddressBook\\"+fileName);
-			if (myObj.createNewFile()) {
+			if (myObj.createNewFile()) 
+			{
 				System.out.println("File created: "+ myObj.getName());
 
-			}  else {
+			}  else
+			{
 				System.out.println("File already exists.");
 				
-			 if(myObj.exists()) {
+			 if(myObj.exists()) 
+			 {
 					System.out.println("File name: "+myObj.getName());
 					System.out.println("AbsolutePath: "+myObj.getAbsolutePath());
 					System.out.println("Writable: "+myObj.canWrite());
@@ -97,23 +103,26 @@ class Methods {
 
 		     }	
 		}
-	} catch (IOException e) {
+	} 
+		catch (IOException e)
+		{
 		System.out.println("An error occured.");
 		e.printStackTrace();
-	}
+	    }
 			 }
 		
-		public void WriteFile() {
+		public void WriteFile() 
+		{
 			Scanner scanner = new Scanner(System.in);
 			System.out.print("Enter file name to write: ");
 			String fileName = scanner.next();
 			System.out.print("Enter file extension to write: ");
 			String fileExtension = scanner.next();
-			//System.out.print("Enter Text to write: ");
-			//String text = scanner.next();
 			File log = new File("C:\\Users\\user\\Desktop\\AddressBook\\"+fileName+fileExtension);
-			try{
-			    if(!log.exists()){
+			try
+			{
+			    if(!log.exists())
+			    {
 			        System.out.println("We had to make a new file.");
 			        log.createNewFile();
 			    }
@@ -125,44 +134,31 @@ class Methods {
 			    System.out.print("\nEnter a address: ");  
 			    String address= sc.nextLine();              //reads string   
 			    System.out.print("\nYou entered address: "+address);   
-			   // bufferedWriter.close();
 			    System.out.print("\nEnter firstname: ");  
 			    String firstname= sc.nextLine();              //reads string   
 			    System.out.print("\nYou entered firstname: "+firstname);   
-			  //  bufferedWriter.close();
 			    System.out.print("\nEnter secondname: ");  
 			    String secondname= sc.nextLine();              //reads string   
 			    System.out.print("\nYou entered secondname: "+secondname);   
-			   // bufferedWriter.close();
 			    System.out.print("\nEnter city: ");  
 			    String city= sc.nextLine();              //reads string   
 			    System.out.print("\nYou entered city: "+city);   
-			   // bufferedWriter.close();
 			    System.out.print("\nEnter state: ");  
 			    String state= sc.nextLine();              //reads string   
 			    System.out.print("\nYou entered state: "+state);   
-			   // bufferedWriter.close();
 			    System.out.print("\nEnter zip: ");  
 			    String zip= sc.nextLine();              //reads string   
 			    System.out.print("\nYou entered zip: "+zip);   
-			   // bufferedWriter.close();
 			    System.out.print("\nEnter phonenumber: ");  
 			    String phonenumber= sc.nextLine();              //reads string   
 			    System.out.print("\nYou entered phonenumber: "+phonenumber);   
 			    System.out.print("\n SAVINGMENU \n TOSAVE-1 \n DON'TSAVE-2\n SAVEAS-3\n");  
 			      int choice_for_saving = scanner.nextInt();
-		switch(choice_for_saving) {
+		switch(choice_for_saving)
+		{
 		case 1:
 			save(address,firstname,secondname,city,state,zip,phonenumber,fileName,fileExtension); 
-			/*System.out.print("You Choose TO SAVE\n");
-			bufferedWriter.write(address.toString()+ "\n");
-			bufferedWriter.write(firstname + "\n");
-			bufferedWriter.write(secondname + "\n");
-     		bufferedWriter.write( city.toString() + "\n");
-			bufferedWriter.write(state.toString()  + "\n");
-			bufferedWriter.write( zip.toString() + "\n");
-			bufferedWriter.write( phonenumber.toString() + "\n");
-			bufferedWriter.close();*/
+
 			
 			System.out.print("Your data is STORED\n");
 			break;
@@ -172,18 +168,11 @@ class Methods {
 		case 3:
 			System.out.print("You Choose SAVE AS\n");
 			save(address,firstname,secondname,city,state,zip,phonenumber,fileName,fileExtension); 
-			/*bufferedWriter.write(address.toString()+ "\n");
-			bufferedWriter.write(firstname + "\n");
-			bufferedWriter.write(secondname + "\n");
-     		bufferedWriter.write( city.toString() + "\n");
-			bufferedWriter.write(state.toString()  + "\n");
-			bufferedWriter.write( zip.toString() + "\n");
-			bufferedWriter.write( phonenumber.toString() + "\n");
-			bufferedWriter.close();*/
 			System.out.print("Enter file extension to SAVEAS: ");
 			String SaveasfileExtension = scanner.next();
 			byte[] array = new byte[500];
-		    try {
+		    try 
+		    {
 		      FileInputStream sourceFile = new FileInputStream("C:\\Users\\user\\Desktop\\AddressBook\\"+fileName+fileExtension);
 		      FileOutputStream destFile = new FileOutputStream("C:\\Users\\user\\Desktop\\AddressBook\\"+fileName+SaveasfileExtension);
 
@@ -198,7 +187,8 @@ class Methods {
 		      sourceFile.close();
 		      destFile.close();
 		    }
-		    catch (Exception e) {
+		    catch (Exception e)
+		    {
 		      e.getStackTrace();
 		    }
 			default:
@@ -211,24 +201,29 @@ class Methods {
 			
 		
 		}
-		void ReadFile() {
+		void ReadFile() 
+		{
 			Scanner scanner = new Scanner(System.in);
 			System.out.print("Enter file name to read: ");
 			String fileName = scanner.next();
 		    try {
 		  	  File myObj = new File("C:\\Users\\user\\Desktop\\AddressBook\\" +fileName);
 		        Scanner myReader = new Scanner(myObj);
-		        while (myReader.hasNextLine()) {
+		        while (myReader.hasNextLine()) 
+		        {
 		          String data = myReader.nextLine();
 		          System.out.println(data);
 		        }
 		        myReader.close();
-		      } catch (FileNotFoundException e) {
+		      } 
+		    catch (FileNotFoundException e) 
+		    {
 		        System.out.println("An error occurred.");
 		        e.printStackTrace();
-		      }
+		    }
 		}
-		void RenameFile() {
+		void RenameFile()
+		{
 			Scanner scanner = new Scanner(System.in);
 			System.out.print("Enter Old file name: ");
 			String oldfileName = scanner.next();
@@ -246,8 +241,10 @@ class Methods {
 		{
 		
 		File log = new File("C:\\Users\\user\\Desktop\\AddressBook\\"+fileName+fileExtension);
-	   try {
-		if(!log.exists()){
+	   try 
+	   {
+		if(!log.exists())
+		{
 	        System.out.println("We had to make a new file.");
 	        log.createNewFile();
 	    }
@@ -264,12 +261,14 @@ class Methods {
 		bufferedWriter.write( phonenumber.toString() + "\n");
 		bufferedWriter.close();
 	   }
-	    catch (Exception e) {
+	    catch (Exception e) 
+	   {
 		      e.getStackTrace();
 		    }
 
 		}
-		void edit() {
+		void edit() 
+		{
 			System.out.print("Enter file name to read: ");
 			Scanner scanner = new Scanner(System.in);
 			String fileName = scanner.next();
@@ -283,7 +282,8 @@ class Methods {
 			System.out.println("Press 7 to EDIT phonenumber");
 
 			int choice = scanner.nextInt();
-			switch(choice) {
+			switch(choice) 
+			{
 			case 1:
 				editoptions(choice,fileName); 
                 break;
@@ -307,25 +307,30 @@ class Methods {
                 break;
 		}
       }
-		 public static void setVariable(int lineNumber, String data,String fileName) throws IOException {
+		 public static void setVariable(int lineNumber, String data,String fileName) throws IOException 
+		 {
 				
 			    Path path = Paths.get("C:\\Users\\user\\Desktop\\AddressBook\\"+fileName);
 			    List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
 			    lines.set(lineNumber - 1, data);
 			    Files.write(path, lines, StandardCharsets.UTF_8);
-			}
+		 }
 		 void editoptions(int choice,String fileName) 
 		 {
 			    Scanner scanner = new Scanner(System.in);
 			    System.out.print("\n Enter text :");
 				String Text = scanner.next();
-				try{
+				try
+				{
 				EditFile obj =new EditFile();
 			    setVariable(choice, Text,fileName);
 			    System.out.println("Done");
-							} catch(IOException e) {
+				} 
+				catch(IOException e)
+				{
 							    System.out.println("COULD NOT EDIT FILE");
-							}
+							
+				}
 		 }
 }
 
