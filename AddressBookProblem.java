@@ -155,10 +155,18 @@ class Options
 			    System.out.print("\nYou entered state: "+state);   
 			    System.out.print("\nEnter zip: ");  
 			    String zip= sc.nextLine();              //reads string   
-			    System.out.print("\nYou entered zip: "+zip);   
+			    String zipRegex = "^[0-9]{6}$";
+			      if( zip.matches(zipRegex))
+					  System.out.print("\nYou entered zip: "+zip);   
+			      else
+			    	  System.out.println("Entered zip is invalid");
 			    System.out.print("\nEnter phonenumber: ");  
-			    String phonenumber= sc.nextLine();              //reads string   
-			    System.out.print("\nYou entered phonenumber: "+phonenumber);   
+			    String phonenumber= sc.nextLine();              //reads string  
+			    String phonenumberRegex = "^(\\d{2}[ ]){1}\\d{8}$";
+			      if( phonenumber.matches(phonenumberRegex))
+					  System.out.print("\nYou entered phonenumber: "+phonenumber);   
+			      else
+			    	  System.out.println("Entered mobile number is invalid");
 			    System.out.print("\n SAVINGMENU \n TOSAVE-1 \n DON'TSAVE-2\n SAVEAS-3\n");  
 			      int choice_for_saving = scanner.nextInt();
 		switch(choice_for_saving)
@@ -242,7 +250,7 @@ class Options
 			        if (oldName.renameTo(newName))  
 			            System.out.println("Renamed successfully");         
 			        else 
-			            System.out.println("Error");   
+			            System.out.println("Sorry file is not renamed ");   
 		}
 		void save(String address,String firstname,String secondname,String city,String state,String zip,String phonenumber,String fileName,String fileExtension) 
 		{
@@ -269,9 +277,9 @@ class Options
 		bufferedWriter.close();
 	   }
 	    catch (Exception e) 
-	   {
-		      e.getStackTrace();
-		    }
+	    {
+		    e.getStackTrace();
+	    }
 
 		}
 		void edit() 
@@ -335,7 +343,7 @@ class Options
 				} 
 				catch(IOException e)
 				{
-							    System.out.println("COULD NOT EDIT FILE");
+				    System.out.println("COULD NOT EDIT FILE");
 							
 				}
 		 }
@@ -358,4 +366,3 @@ class Options
 }
 
 	
-
